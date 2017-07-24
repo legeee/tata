@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date对象测试</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var date = new Date();
+			function getDate(date){
+				var weeks = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+				var year = date.getFullYear();
+				var month = date.getMonth()+1;//getMonth获得是0开始
+				var day = date.getDate();
+				var dayOfWeek = weeks[date.getDay()];
+				var hour = date.getHours();
+				var minute = date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes();
+				var second = date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds();
+				var dateStr = '当前日期：'+year+'年'+month+'月'+day+'日&nbsp;&nbsp;'+dayOfWeek+'&nbsp;&nbsp;'+hour+':'+minute+':'+second+'<br />';
+				document.getElementById('div').innerHTML=dateStr;
+			}
+			setInterval(function(){getDate(new Date())},500);
+		}
+	</script>
+</head>
+<!--
+使用new Date()产生一个当前系统时间
+注意：获取年使用getFullYear 获取月份使用getMonth()+1
+-->
+<body>
+	<div id="div"></div>
+</body>
+</html>
